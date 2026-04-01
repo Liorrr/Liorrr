@@ -1,8 +1,8 @@
-# Lior
+# Lior Cohen
 
-QA Automation Engineer at [AiQ & Kaleidoo](https://kaleidoo.ai) · Indie founder · Rust + Python + Godot
+QA Automation Engineer at [AiQ & Kaleidoo](https://kaleidoo.ai) · Building AI infrastructure in public
 
-Building open-source tools at the intersection of AI reliability and developer experience.
+`Rust` · `Python`
 
 ---
 
@@ -24,20 +24,35 @@ Pure Rust AI-OS memory kernel that inverts the standard pull-based model. Every 
 ---
 
 ### MLTK — ML Test Kit
-> *pytest for ML — unified testing across the entire ML lifecycle.*
+> *Every ML tool tests one thing. MLTK tests everything.*
 
-Open-source Python + Rust toolkit that extends pytest into every stage of ML: data quality, model validation, inference latency, training bug detection, LLM evaluation, compliance.
+Most ML testing tools pick a lane — LLM eval, or data monitoring, or compliance. I built MLTK to cover the whole stack in a single pytest plugin: raw data through deployed model, training loop through production inference, open-source assertions through regulated compliance.
 
-- **3,080+ tests** · **215 assertions** · **24 CLI commands**
-- **7 behavioral consistency assertions** — first-mover, no competitor has this
-- Rust-accelerated stats (KS, PSI, KL, chi2, Wasserstein, SIMD cosine) via PyO3
-- Full ML lifecycle: data → model → inference → training → LLM → compliance
-- Compliance modules: EU AI Act · FDA 21 CFR Part 11 · OWASP LLM Top 10
-- pytest plugin: drop `--mltk-report` onto any existing test run
-- VS Code extension for inline test results
+The architecture I designed is a Python + Rust hybrid — statistical computations (KS, PSI, Wasserstein, SIMD cosine, PII scanning) are implemented in Rust via PyO3 and compiled into the wheel. No Rust toolchain required. Just `pip install`.
 
-[![PyPI](https://img.shields.io/pypi/v/mltk?label=PyPI&logo=python)](https://pypi.org/project/mltk)
-[![GitHub](https://img.shields.io/badge/Liorrr%2Fmltk-Apache_2.0-blue?logo=github)](https://github.com/Liorrr/mltk)
+**What no other tool does:**
+
+| Capability | MLTK | Everyone Else |
+|---|---|---|
+| Behavioral consistency testing | 7 assertions | Nobody |
+| Training bug detection | P0 / P1 / P2 coverage | Nobody |
+| Generates committable test code | `mltk scan` → `.py` files | Competitors generate PDFs |
+| Full lifecycle in one plugin | data → model → inference → LLM → compliance | DeepEval: LLM only · Evidently: monitoring only |
+| VS Code extension | Test Inspector, inline results | Nobody (in ML testing) |
+| Rust-accelerated stats | Pre-compiled wheel | Nobody |
+
+**215 assertions · 3,080+ tests · 24 CLI commands · 8 compliance frameworks**
+EU AI Act · FDA 21 CFR Part 11 · OWASP LLM Top 10 · NIST AI RMF
+`Python 3.10+` · `Rust / PyO3 / Maturin` · `pytest plugin` · `FastAPI` · `VS Code extension`
+
+---
+
+### Bellkis HUB — AI Desktop App
+> *One app to run, route, and evaluate every AI model you work with.*
+
+A feature-packed desktop application built with Tauri + Rust + React. Local model management, cloud provider routing, fine-tuning workflows, ML training platform, secure air-gapped mode, custom themes, and a built-in spending tracker — with ShrimPK memory kernel under the hood.
+
+`Tauri 2.x` · `Rust / Axum` · `React 19 / TypeScript` · `PostgreSQL` · `Stripe` · `Docker`
 
 ---
 
@@ -46,10 +61,8 @@ Open-source Python + Rust toolkit that extends pytest into every stage of ML: da
 | Project | Stack | Status |
 |---------|-------|--------|
 | **ShrimPK** — AI memory kernel | Pure Rust, fastembed, LSH, Hebbian | v0.4.0 live, v0.5.0 in progress |
-| **MLTK** — ML testing toolkit | Python + Rust (PyO3), pytest, FastAPI | v0.9.0 on PyPI |
-| **Bellkis HUB** — AI desktop app | Tauri 2.x, Rust/Axum, React 19, Stripe | Pre-launch |
-| **Void Recursion** — space shooter | Godot 4.6, GDScript | Sprint 9 complete |
-| **Rift Gardener** — tower defense | Godot 4.6, GDScript | Pre-production |
+| **MLTK** — ML testing toolkit | Python + Rust (PyO3), pytest, FastAPI | v0.9.0 |
+| **Bellkis HUB** — AI desktop app | Tauri 2.x, Rust/Axum, React 19 | Pre-launch |
 
 ---
 
@@ -62,7 +75,7 @@ Open-source Python + Rust toolkit that extends pytest into every stage of ML: da
 `fastembed` · `LSH` · `Bloom filters` · `Hebbian learning` · `SIMD cosine` · `cross-encoders` · `HyDE` · `ONNX` · `embeddings`
 
 **Frontend & Desktop**
-`React 19` · `TypeScript` · `Tauri 2.x` · `shadcn/ui` · `Zustand` · `Tailwind CSS` · `Expo (React Native)` · `PixiJS`
+`React 19` · `TypeScript` · `Tauri 2.x` · `shadcn/ui` · `Zustand` · `Tailwind CSS`
 
 **Testing & QA**
 `pytest` · `Playwright` · `cargo-fuzz` · `cargo test` · `E2E` · `behavioral consistency testing`
@@ -70,30 +83,12 @@ Open-source Python + Rust toolkit that extends pytest into every stage of ML: da
 **DevOps**
 `GitHub Actions` · `Docker` · `Fly.io` · `Stripe` · `MCP (Model Context Protocol)`
 
-**Game Dev**
-`Godot 4.6` · `GDScript` · `2D pixel art pipeline`
-
----
-
-## By the Numbers
-
-| | |
-|---|---|
-| ShrimPK retrieval speed | **3.50ms P50** at 100K memories |
-| ShrimPK accuracy | **100% LongMemEval** (isolated) |
-| MLTK tests | **3,080+** passing |
-| MLTK assertions | **215** (7 behavioral consistency — first in space) |
-| MLTK CLI commands | **24** |
-
 ---
 
 ## Open Source
 
-All public projects are **Apache 2.0** licensed. PRs welcome on both repos.
-
-- [bellkisai/kernel](https://github.com/bellkisai/kernel) — ShrimPK AI memory kernel
-- [Liorrr/mltk](https://github.com/Liorrr/mltk) — MLTK ML testing toolkit
+- [bellkisai/kernel](https://github.com/bellkisai/kernel) — ShrimPK AI memory kernel · Apache 2.0 · PRs welcome
 
 ---
 
-*Israel · Working at [AiQ & Kaleidoo](https://kaleidoo.ai) · Building in public*
+*Israel · Working at [AiQ & Kaleidoo](https://kaleidoo.ai) · Building in public · [lior@bellkis.com](mailto:lior@bellkis.com)*
